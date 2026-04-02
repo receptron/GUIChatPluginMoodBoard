@@ -104,6 +104,7 @@ const props = defineProps<{
 }>();
 
 const svgRef = ref<SVGSVGElement | null>(null);
+defineExpose({ svgRef });
 const data = ref<MoodBoardData | null>(null);
 
 const viewBoxWidth = 800;
