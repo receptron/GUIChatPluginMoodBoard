@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/moodboard",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Interactive mood board plugin for visual inspiration and brainstorming",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -40,10 +40,10 @@
     "lint": "eslint src demo"
   },
   "peerDependencies": {
-    "gui-chat-protocol": "^0.0.4",
-    "vue": "^3.5.0",
+    "gui-chat-protocol": "^0.1.0",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "vue": "^3.5.0"
   },
   "peerDependenciesMeta": {
     "vue": {
@@ -70,7 +70,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-vue": "^10.8.0",
     "globals": "^17.4.0",
-    "gui-chat-protocol": "^0.0.4",
+    "gui-chat-protocol": "^0.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.2.2",
@@ -90,7 +90,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gui-chat-protocol": "^0.0.4",
+    "gui-chat-protocol": "^0.1.0",
     "openai": "^4.77.0"
   }
 }
