@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/moodboard",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Interactive mood board plugin for visual inspiration and brainstorming",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -40,7 +40,7 @@
     "lint": "eslint src demo"
   },
   "peerDependencies": {
-    "gui-chat-protocol": "^1.1.0",
+    "gui-chat-protocol": "^1.2.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "vue": "^3.5.0"
@@ -63,16 +63,16 @@
     "@types/react-dom": "^19.1.6",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
-    "@vitejs/plugin-react": "^6.0.3",
+    "@vitejs/plugin-react": "^6.0.4",
     "@vitejs/plugin-vue": "^6.0.8",
     "eslint": "^10.7.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-vue": "^10.10.0",
     "globals": "^17.7.0",
-    "gui-chat-protocol": "^1.1.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "gui-chat-protocol": "^1.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
     "vite": "^8.1.5",
@@ -90,7 +90,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gui-chat-protocol": "^1.1.0",
+    "gui-chat-protocol": "^1.2.0",
     "openai": "^6.47.0"
   }
 }
