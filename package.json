@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/moodboard",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Interactive mood board plugin for visual inspiration and brainstorming",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -35,8 +35,8 @@
   "scripts": {
     "dev": "vite",
     "dev:react": "vite --config vite.config.react.ts",
-    "build": "vite build && vue-tsc -p tsconfig.build.json --emitDeclarationOnly",
-    "typecheck": "vue-tsc --noEmit",
+    "build": "vite build && vue-tsc -p tsconfig.build.json --emitDeclarationOnly && tsc -p tsconfig.react.json --emitDeclarationOnly",
+    "typecheck": "vue-tsc --noEmit && tsc -p tsconfig.react.json --noEmit",
     "lint": "eslint src demo"
   },
   "peerDependencies": {
