@@ -29,17 +29,11 @@ export function View({ selectedResult, sendTextMessage }: ViewProps) {
   const handleItemClick = (item: MoodBoardItem) => {
     if (sendTextMessage) {
       if (item.type === "color") {
-        sendTextMessage(
-          `Add more elements that complement the color ${item.content}`
-        );
+        sendTextMessage(`Add more elements that complement the color ${item.content}`);
       } else if (item.type === "text") {
-        sendTextMessage(
-          `Expand on the concept "${item.content}" - add related moods and colors`
-        );
+        sendTextMessage(`Expand on the concept "${item.content}" - add related moods and colors`);
       } else if (item.type === "emoji") {
-        sendTextMessage(
-          `Add more elements that match the mood of ${item.content}`
-        );
+        sendTextMessage(`Add more elements that match the mood of ${item.content}`);
       }
     }
   };
@@ -53,29 +47,16 @@ export function View({ selectedResult, sendTextMessage }: ViewProps) {
   }
 
   return (
-    <div
-      className="size-full overflow-hidden"
-      style={{ backgroundColor: data.backgroundColor || "#F9FAFB" }}
-    >
+    <div className="size-full overflow-hidden" style={{ backgroundColor: data.backgroundColor || "#F9FAFB" }}>
       <div className="size-full relative">
         {/* Title and Theme */}
         <div className="absolute top-4 left-4 z-10">
-          <h2 className="text-xl font-bold text-gray-800 bg-white/80 px-3 py-1 rounded-lg shadow">
-            {data.title}
-          </h2>
-          {data.theme && (
-            <span className="text-xs text-gray-500 bg-white/60 px-2 py-0.5 rounded mt-1 inline-block">
-              {data.theme}
-            </span>
-          )}
+          <h2 className="text-xl font-bold text-gray-800 bg-white/80 px-3 py-1 rounded-lg shadow">{data.title}</h2>
+          {data.theme && <span className="text-xs text-gray-500 bg-white/60 px-2 py-0.5 rounded mt-1 inline-block">{data.theme}</span>}
         </div>
 
         {/* SVG Canvas */}
-        <svg
-          className="size-full"
-          viewBox={`0 0 ${VIEW_BOX_WIDTH} ${VIEW_BOX_HEIGHT}`}
-          preserveAspectRatio="xMidYMid meet"
-        >
+        <svg className="size-full" viewBox={`0 0 ${VIEW_BOX_WIDTH} ${VIEW_BOX_HEIGHT}`} preserveAspectRatio="xMidYMid meet">
           {/* Items */}
           <g className="items">
             {data.items.map((item) => (
@@ -102,12 +83,7 @@ export function View({ selectedResult, sendTextMessage }: ViewProps) {
 
                 {/* Emoji */}
                 {item.type === "emoji" && (
-                  <text
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="select-none pointer-events-none"
-                    style={{ fontSize: `${item.width}px` }}
-                  >
+                  <text textAnchor="middle" dominantBaseline="middle" className="select-none pointer-events-none" style={{ fontSize: `${item.width}px` }}>
                     {item.content}
                   </text>
                 )}
@@ -115,21 +91,8 @@ export function View({ selectedResult, sendTextMessage }: ViewProps) {
                 {/* Text */}
                 {item.type === "text" && (
                   <>
-                    <rect
-                      x={-item.width / 2}
-                      y={-item.height / 2}
-                      width={item.width}
-                      height={item.height}
-                      fill="white"
-                      rx={4}
-                      className="drop-shadow-md"
-                    />
-                    <text
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      fill="#374151"
-                      className="text-sm font-medium select-none pointer-events-none"
-                    >
+                    <rect x={-item.width / 2} y={-item.height / 2} width={item.width} height={item.height} fill="white" rx={4} className="drop-shadow-md" />
+                    <text textAnchor="middle" dominantBaseline="middle" fill="#374151" className="text-sm font-medium select-none pointer-events-none">
                       {truncateText(item.content, 15)}
                     </text>
                   </>
@@ -141,9 +104,7 @@ export function View({ selectedResult, sendTextMessage }: ViewProps) {
 
         {/* Instructions */}
         <div className="absolute bottom-4 left-4 right-4 text-center">
-          <p className="text-sm text-gray-500 bg-white/80 px-3 py-2 rounded-lg inline-block">
-            Click an item to explore related concepts
-          </p>
+          <p className="text-sm text-gray-500 bg-white/80 px-3 py-2 rounded-lg inline-block">Click an item to explore related concepts</p>
         </div>
       </div>
     </div>

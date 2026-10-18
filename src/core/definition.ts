@@ -17,8 +17,7 @@ export const TOOL_DEFINITION: ToolDefinition = {
       action: {
         type: "string",
         enum: ["create", "add_item", "update_theme", "rearrange"],
-        description:
-          "Action to perform: create (new mood board), add_item (add element), update_theme (change style), rearrange (reorganize)",
+        description: "Action to perform: create (new mood board), add_item (add element), update_theme (change style), rearrange (reorganize)",
       },
       title: {
         type: "string",
