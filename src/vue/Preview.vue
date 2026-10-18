@@ -4,9 +4,7 @@
     <div class="text-purple-700 font-medium text-sm truncate">
       {{ title }}
     </div>
-    <div class="text-xs text-gray-500 mt-1">
-      {{ itemCount }} elements
-    </div>
+    <div class="text-xs text-gray-500 mt-1">{{ itemCount }} elements</div>
   </div>
 </template>
 

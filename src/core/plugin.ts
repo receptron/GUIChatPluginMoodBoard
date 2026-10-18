@@ -2,17 +2,8 @@
  * Mood Board Plugin Core
  */
 
-import type {
-  ToolPluginCore,
-  ToolContext,
-  ToolResult,
-} from "gui-chat-protocol";
-import type {
-  MoodBoardData,
-  MoodBoardArgs,
-  MoodBoardJsonData,
-  MoodBoardItem,
-} from "./types";
+import type { ToolPluginCore, ToolContext, ToolResult } from "gui-chat-protocol";
+import type { MoodBoardData, MoodBoardArgs, MoodBoardJsonData, MoodBoardItem } from "./types";
 import { TOOL_NAME, TOOL_DEFINITION, SYSTEM_PROMPT } from "./definition";
 
 export { TOOL_NAME, TOOL_DEFINITION, SYSTEM_PROMPT } from "./definition";
@@ -55,12 +46,7 @@ function getEmojisForMood(mood: string): string[] {
   return MOOD_EMOJIS.creative;
 }
 
-function calculateItemPosition(
-  index: number,
-  total: number,
-  boardWidth: number,
-  boardHeight: number
-): { x: number; y: number } {
+function calculateItemPosition(index: number, total: number, boardWidth: number, boardHeight: number): { x: number; y: number } {
   const cols = Math.ceil(Math.sqrt(total));
   const row = Math.floor(index / cols);
   const col = index % cols;
@@ -77,11 +63,7 @@ function calculateItemPosition(
   };
 }
 
-function createMoodBoard(
-  title: string,
-  theme: string,
-  concepts: string[]
-): MoodBoardData {
+function createMoodBoard(title: string, theme: string, concepts: string[]): MoodBoardData {
   const boardWidth = 800;
   const boardHeight = 600;
   const colors = getThemeColors(theme);
@@ -142,13 +124,7 @@ function createMoodBoard(
   };
 }
 
-function addItemToBoard(
-  board: MoodBoardData,
-  itemType: "color" | "text" | "emoji",
-  content: string,
-  label?: string,
-  mood?: string
-): MoodBoardData {
+function addItemToBoard(board: MoodBoardData, itemType: "color" | "text" | "emoji", content: string, label?: string, mood?: string): MoodBoardData {
   const newItem: MoodBoardItem = {
     id: generateId(),
     type: itemType,
@@ -189,10 +165,7 @@ function updateBoardTheme(board: MoodBoardData, theme: string): MoodBoardData {
   };
 }
 
-export const executeMoodBoard = async (
-  _context: ToolContext,
-  args: MoodBoardArgs
-): Promise<ToolResult<MoodBoardData, MoodBoardJsonData>> => {
+export const executeMoodBoard = async (_context: ToolContext, args: MoodBoardArgs): Promise<ToolResult<MoodBoardData, MoodBoardJsonData>> => {
   const { action } = args;
 
   let boardData: MoodBoardData;
@@ -208,14 +181,9 @@ export const executeMoodBoard = async (
           instructions: "Ask the user for a title and theme.",
         };
       }
-      boardData = createMoodBoard(
-        args.title,
-        args.theme || "modern",
-        args.concepts || []
-      );
+      boardData = createMoodBoard(args.title, args.theme || "modern", args.concepts || []);
       message = `Created mood board "${args.title}" with ${boardData.items.length} elements`;
-      instructions =
-        "Tell the user the mood board has been created. Ask if they want to add more elements or change the theme.";
+      instructions = "Tell the user the mood board has been created. Ask if they want to add more elements or change the theme.";
       break;
     }
 
@@ -227,16 +195,9 @@ export const executeMoodBoard = async (
           instructions: "Ask the user what type of item to add.",
         };
       }
-      boardData = addItemToBoard(
-        args.existingBoard as MoodBoardData,
-        args.itemType,
-        args.itemContent,
-        args.itemLabel,
-        args.itemMood
-      );
+      boardData = addItemToBoard(args.existingBoard as MoodBoardData, args.itemType, args.itemContent, args.itemLabel, args.itemMood);
       message = `Added ${args.itemType} to the mood board`;
-      instructions =
-        "Confirm the item was added. Ask if they want to add more or adjust the layout.";
+      instructions = "Confirm the item was added. Ask if they want to add more or adjust the layout.";
       break;
     }
 
@@ -248,13 +209,9 @@ export const executeMoodBoard = async (
           instructions: "Ask the user which theme they prefer.",
         };
       }
-      boardData = updateBoardTheme(
-        args.existingBoard as MoodBoardData,
-        args.theme
-      );
+      boardData = updateBoardTheme(args.existingBoard as MoodBoardData, args.theme);
       message = `Updated mood board theme to "${args.theme}"`;
-      instructions =
-        "Confirm the theme was changed. Ask if they like the new look.";
+      instructions = "Confirm the theme was changed. Ask if they like the new look.";
       break;
     }
 
@@ -301,11 +258,7 @@ export const executeMoodBoard = async (
   };
 };
 
-export const pluginCore: ToolPluginCore<
-  MoodBoardData,
-  MoodBoardJsonData,
-  MoodBoardArgs
-> = {
+export const pluginCore: ToolPluginCore<MoodBoardData, MoodBoardJsonData, MoodBoardArgs> = {
   toolDefinition: TOOL_DEFINITION,
   execute: executeMoodBoard,
   generatingMessage: "Creating mood board...",

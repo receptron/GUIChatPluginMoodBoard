@@ -20,13 +20,7 @@ export const plugin: ToolPluginReact<MoodBoardData, MoodBoardJsonData, MoodBoard
 
 export type { MoodBoardData, MoodBoardArgs, MoodBoardJsonData } from "../core/types";
 
-export {
-  TOOL_NAME,
-  TOOL_DEFINITION,
-  SYSTEM_PROMPT,
-  executeMoodBoard,
-  pluginCore,
-} from "../core/plugin";
+export { TOOL_NAME, TOOL_DEFINITION, SYSTEM_PROMPT, executeMoodBoard, pluginCore } from "../core/plugin";
 
 export { samples } from "../core/samples";
 

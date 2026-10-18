@@ -12,12 +12,7 @@
       </div>
 
       <!-- SVG Canvas -->
-      <svg
-        ref="svgRef"
-        class="size-full"
-        :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <svg ref="svgRef" class="size-full" :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`" preserveAspectRatio="xMidYMid meet">
         <!-- Items -->
         <g class="items">
           <g
@@ -44,33 +39,15 @@
 
             <!-- Emoji -->
             <template v-else-if="item.type === 'emoji'">
-              <text
-                text-anchor="middle"
-                dominant-baseline="middle"
-                class="select-none pointer-events-none"
-                :style="{ fontSize: `${item.width}px` }"
-              >
+              <text text-anchor="middle" dominant-baseline="middle" class="select-none pointer-events-none" :style="{ fontSize: `${item.width}px` }">
                 {{ item.content }}
               </text>
             </template>
 
             <!-- Text -->
             <template v-else-if="item.type === 'text'">
-              <rect
-                :x="-item.width / 2"
-                :y="-item.height / 2"
-                :width="item.width"
-                :height="item.height"
-                fill="white"
-                rx="4"
-                class="drop-shadow-md"
-              />
-              <text
-                text-anchor="middle"
-                dominant-baseline="middle"
-                fill="#374151"
-                class="text-sm font-medium select-none pointer-events-none"
-              >
+              <rect :x="-item.width / 2" :y="-item.height / 2" :width="item.width" :height="item.height" fill="white" rx="4" class="drop-shadow-md" />
+              <text text-anchor="middle" dominant-baseline="middle" fill="#374151" class="text-sm font-medium select-none pointer-events-none">
                 {{ truncateText(item.content, 15) }}
               </text>
             </template>
@@ -80,9 +57,7 @@
 
       <!-- Instructions -->
       <div class="absolute bottom-4 left-4 right-4 text-center">
-        <p class="text-sm text-gray-500 bg-white/80 px-3 py-2 rounded-lg inline-block">
-          Click an item to explore related concepts
-        </p>
+        <p class="text-sm text-gray-500 bg-white/80 px-3 py-2 rounded-lg inline-block">Click an item to explore related concepts</p>
       </div>
     </div>
 
@@ -117,7 +92,7 @@ watch(
       data.value = newResult.data as MoodBoardData;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 function truncateText(text: string, maxLength: number): string {
@@ -128,17 +103,11 @@ function truncateText(text: string, maxLength: number): string {
 function handleItemClick(item: MoodBoardItem) {
   if (props.sendTextMessage) {
     if (item.type === "color") {
-      props.sendTextMessage(
-        `Add more elements that complement the color ${item.content}`
-      );
+      props.sendTextMessage(`Add more elements that complement the color ${item.content}`);
     } else if (item.type === "text") {
-      props.sendTextMessage(
-        `Expand on the concept "${item.content}" - add related moods and colors`
-      );
+      props.sendTextMessage(`Expand on the concept "${item.content}" - add related moods and colors`);
     } else if (item.type === "emoji") {
-      props.sendTextMessage(
-        `Add more elements that match the mood of ${item.content}`
-      );
+      props.sendTextMessage(`Add more elements that match the mood of ${item.content}`);
     }
   }
 }
